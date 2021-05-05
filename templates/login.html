@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %}VOTING SITE{% endblock %} {% block body %}
+{% extends 'base.html' %} {% block title %}STATION LOGIN{% endblock %} {% block body %}
 <div class="container godown">
 	<div class="row justify-content-center">
 		<div class="col-sm-6">
@@ -7,14 +7,14 @@
 					Station Login
 				</h2>
 				<br />
-				<form action="" class="row g-3" method="POST">
+				<form action="/login" class="row g-3" method="POST">
 					<div class="col-md-12">
 						<label for="validationCustom04" class="form-label fw-bold">Email:</label>
-						<input type="email" class="form-control" id="validationCustom04" name="mail" required />
+						<input type="email" class="form-control" id="validationCustom04" name="email" required />
 					</div>
 					<div class="col-md-12">
 						<label for="myInput" class="form-label fw-bold">Password:</label>
-						<input type="password" class="form-control" id="myinput4" name="pass" required />
+						<input type="password" class="form-control" id="myinput4" name="pass1" required />
 					</div>
 					<div class="container text-center">
 						<button class="btn btn-lg bttn mb-4 fw-bold" type="submit" style="background-color: #66fcf1">
@@ -24,10 +24,10 @@
 				</form>
 				<div class="row linksgodown">
 					<div class="col-6 links">
-						<a href="">Home</a>
+						<a href="/">Home</a>
 					</div>
 					<div class="col-6 links" style="text-align: right">
-						<a href="">New station?Click to SignUp</a>
+						<a href="/signup_form">New station?Click to SignUp</a>
 					</div>
 				</div>
 			</div>

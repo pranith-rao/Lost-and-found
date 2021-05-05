@@ -1,11 +1,12 @@
-{% extends 'base.html' %} {% block title %}VOTING SITE{% endblock %} {% block body %}
+{% extends 'base.html' %} {% block title %}VIEW ITEM{% endblock %} {% block body %}
 <div class="container mt-3 bluecl">
 	<h1 class="text-center fw-bold text-uppercase mb-5 display-2">Lost and found</h1>
-	<div class="container-fluid table-responsive">
+	<div class="container-fluid table-responsive text-uppercase">
 		<form class="d-flex">
-			<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-			<button class="btn fw-bold" type="submit" style="background-color: #66fcf1">Search</button>
+			<input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" />
+			<button class="btn fw-bold text-uppercase" type="submit" style="background-color: #66fcf1">Search</button>
 		</form>
+		{% if items %}
 		<table class="table table-bordered border-white text-center mt-3 bluecl">
 			<thead>
 				<tr>
@@ -18,8 +19,25 @@
 					<th scope="col">Contact No</th>
 				</tr>
 			</thead>
-			<tbody></tbody>
+			<tbody>
+				{% for item in items %}
+				<tr>
+					<th scope="row">{{item.id}}</th>
+					<td>{{item.name}}</td>
+					<td>{{item.description}}</td>
+					<td>{{item.place_found}}</td>
+					<td>{{item.date_found}}</td>
+					<td>{{item.station.address}}</td>
+					<td>{{item.station.contact_no}}</td>
+				</tr>
+				{% endfor %} {% else %}
+				<p class="text-center mt-5 fw-bold text-uppercase display-5">No Items Found</p>
+				{% endif %}
+			</tbody>
 		</table>
+		<div class="text-center mt-4">
+			<a href="/" class="btn btn-lg fw-bold text-uppercase" style="background-color: #66fcf1">Home</a>
+		</div>
 	</div>
 </div>
 {% endblock body %}

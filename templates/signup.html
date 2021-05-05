@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %}VOTING SITE{% endblock %} {% block body %}
+{% extends 'base.html' %} {% block title %}STATION SIGNUP{% endblock %} {% block body %}
 <div class="container goodown">
 	<div class="row justify-content-center">
 		<div class="col-sm-6">
@@ -6,14 +6,14 @@
 				<h2 class="text-uppercase text-center my-3 p-3 border border-white border-4 rounded fw-bolder">
 					Station Registration
 				</h2>
-				<form action="" class="row g-3 down" method="POST">
+				<form action="/signup" class="row g-3 down" method="POST">
 					<div class="col-md-12">
 						<label for="validationCustom01" class="form-label fw-bold">Station Name:</label>
 						<input type="text" class="form-control" id="validationCustom01" name="name" required />
 					</div>
 					<div class="col-md-12">
 						<label for="validationCustom04" class="form-label fw-bold">Email:</label>
-						<input type="email" class="form-control" id="validationCustom04" name="mail" required />
+						<input type="email" class="form-control" id="validationCustom04" name="email" required />
 					</div>
 					<div class="col-md-12">
 						<label for="myInput" class="form-label fw-bold">Password:</label>
@@ -48,7 +48,7 @@
 				<div class="row linksgodown">
 					<div class="col-6 links">
 						<i class="fas fa-address-book"></i>
-						<a href="">Home</a>
+						<a href="/">Home</a>
 					</div>
 				</div>
 			</div>
