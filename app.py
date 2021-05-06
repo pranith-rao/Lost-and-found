@@ -48,7 +48,7 @@ class Item(db.Model):
     station_id = db.Column(db.Integer, db.ForeignKey('station.id', onupdate="CASCADE", ondelete="CASCADE"), nullable=False)
     station = db.relationship('Station')
 
-db.create_all()
+#db.create_all()
 
 @app.route("/")
 def home():
@@ -67,7 +67,7 @@ def signup_form():
 def enteritem_form():
     return render_template("enteritem.html")
 
-@app.route("/viewitem")
+@app.route("/viewitem",methods=['GET'])
 def viewitem():
     items = Item.query.all()
     search = request.args.get('search')
