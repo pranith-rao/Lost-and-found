@@ -25,7 +25,7 @@ login_manager.login_message_category = "error"
 
 @login_manager.user_loader
 def load_user(user_id):
-  return Station.query.filter_by(id=user_id).first()
+    return Station.query.filter_by(id=user_id).first()
 
 
 class Station(db.Model, UserMixin):
@@ -48,7 +48,7 @@ class Item(db.Model):
     station_id = db.Column(db.Integer, db.ForeignKey('station.id', onupdate="CASCADE", ondelete="CASCADE"), nullable=False)
     station = db.relationship('Station')
 
-db.create_all()
+#db.create_all()
 
 @app.route("/")
 def home():
