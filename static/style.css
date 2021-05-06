@@ -4,6 +4,11 @@
 	box-sizing: border-box;
 }
 
+button,
+a {
+	z-index: 99;
+}
+
 body {
 	background-color: #1f2833;
 }
