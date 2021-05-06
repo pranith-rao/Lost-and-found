@@ -5,7 +5,7 @@
 }
 
 #button_id {
-	z-index: 99;
+	cursor: pointer;
 }
 
 body {
