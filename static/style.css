@@ -81,6 +81,6 @@ body {
 		margin-top: 80px;
 	}
 	#button_id {
-		z-index: 5;
+		z-index: 99;
 	}
 }
