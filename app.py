@@ -8,7 +8,7 @@ import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(16)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lost&found.db'
-app.config['SQLALCHEMY_ECHO'] = True
+#app.config['SQLALCHEMY_ECHO'] = True
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
@@ -67,7 +67,7 @@ def viewitem():
     items = Item.query.all()
     search = request.args.get('search')
     if search:
-        items = Item.query.filter_by(name=search)
+        items = Item.query.filter_by(name=search).all()
     return render_template('viewitem.html', items=items)
 
 @app.route("/updateitem")
