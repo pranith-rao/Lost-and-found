@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %}VIEW ITEM{% endblock %} {% block body %}
+{% extends 'base.html' %} {% block title %}UPDATE ITEM{% endblock %} {% block body %}
 <div class="container mt-3 bluecl">
 	<h1 class="text-center fw-bold text-uppercase mb-5 display-2">Lost and found</h1>
 	<div class="container-fluid table-responsive text-uppercase">
@@ -17,6 +17,8 @@
 					<th scope="col">Date found</th>
 					<th scope="col">Station Address</th>
 					<th scope="col">Contact No</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,17 +31,46 @@
 					<td>{{item.date_found}}</td>
 					<td>{{item.station.address}}</td>
 					<td>{{item.station.contact_no}}</td>
+					<td>
+						<a href="/edit_item/{{item.id}}"
+							><button class="btn btn-success"><i class="fa fa-edit"></i></button
+						></a>
+					</td>
+					<td>
+						<a onclick="delItem('{{item.id}}')"
+							><button class="btn btn-danger" type="submit" name="del">
+								<i class="fa fa-trash"></i></button
+						></a>
+					</td>
 				</tr>
 				{% endfor %} {% else %}
 				<p class="text-center mt-5 fw-bold text-uppercase display-5">No Items Found</p>
 				{% endif %}
 			</tbody>
 		</table>
-		<div class="text-center mt-4">
-			<a href="/" class="btn btn-lg fw-bold text-uppercase" style="background-color: #66fcf1"
-				><i class="fas fa-arrow-left"></i> Home</a
-			>
+		<div class="row linksgodown">
+			<div class="col-6 links">
+				<a href="/enteritem_form" style="color: #66fcf1"><i class="fas fa-arrow-left"></i> Back</a>
+			</div>
+			<div class="col-6 links" style="text-align: right">
+				<a href="/logout" style="color: #66fcf1">Logout <i class="fas fa-sign-out-alt"></i></a>
+			</div>
 		</div>
 	</div>
 </div>
+<script>
+	function delItem(id) {
+		Swal.fire({
+			title: 'Are you sure?',
+			icon: 'warning',
+			text: "You won't be able to revert this!",
+			showCancelButton: true,
+			confirmButtonColor: '#d33',
+			cancelButtonColor: '#3085d6',
+			confirmButtonText: `<a href="/delete/${id}" style="color: white;text-decoration: none;">
+						Yeah!
+					</a>`
+		});
+	}
+</script>
 {% endblock body %}

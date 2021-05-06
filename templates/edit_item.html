@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block title %}EDIT ITEM{% endblock %} {% block body %}
+<div class="container itemgodown">
+	<div class="row justify-content-center">
+		<div class="col-sm-6">
+			<div class="card mt-5 p-4 border border-white border-4 rounded">
+				<h2 class="text-uppercase text-center my-3 p-3 border border-white border-4 rounded fw-bolder">
+					Update Item
+				</h2>
+				<form action="/edit/{{item.id}}" class="row g-3 down" method="POST">
+					<div class="col-md-12">
+						<label for="validationCustom01" class="form-label fw-bold">Item Name:</label>
+						<input type="text" class="form-control" id="validationCustom01" name="name" value="{{item.name}}" required />
+					</div>
+					<div class="col-md-12">
+						<label for="validationCustom04" class="form-label fw-bold">Place Found:</label>
+						<input type="text" class="form-control" id="validationCustom04" name="place" value="{{item.place_found}}" required />
+					</div>
+					<div class="col-md-12">
+						<label for="myDate" class="form-label fw-bold">Date Found:</label>
+						<input type="date" class="form-control" id="myDate" name="date" required />
+					</div>
+					<div class="col-md-12">
+						<label for="myInput" class="form-label fw-bold">Description:</label>
+						<textarea class="form-control" name="desc" rows="3" id="desc" placeholder="Your Text here."></textarea>
+					</div>
+					<div class="container text-center">
+						<button class="btn btn-lg bttn mb-4 fw-bold" type="submit" style="background-color: #66fcf1">
+							SAVE CHANGES
+						</button>
+					</div>
+				</form>
+				<div class="text-center mt-4">
+					<a href="/updateitem" class="btn btn-lg fw-bold text-uppercase" style="background-color: #66fcf1"
+						><i class="fas fa-arrow-left"></i> Back</a
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    document.getElementById("myDate").value = "{{item.date_found}}";
+    document.getElementById("desc").value = "{{item.description}}";
+</script>
+{% endblock body %}

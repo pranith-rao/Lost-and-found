@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(16)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lost&found.db'
 app.config['SQLALCHEMY_ECHO'] = True
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
@@ -69,6 +70,18 @@ def viewitem():
         items = Item.query.filter_by(name=search)
     return render_template('viewitem.html', items=items)
 
+@app.route("/updateitem")
+@login_required
+def updateitem():
+    items = Item.query.filter_by(station_id=current_user.id)
+    return render_template('updateitem.html',items=items)
+
+@app.route("/edit_item/<int:id>",methods=['GET','POST'])
+@login_required
+def edit_item(id):
+    item = Item.query.filter_by(id=id).first()
+    return render_template('edit_item.html',item=item)
+
 @app.route("/signup", methods=['POST'])
 def signup():
     if request.method == 'POST':
@@ -127,10 +140,37 @@ def enteritem():
         flash("Item Added Successfully",'success')
         return redirect(url_for("enteritem_form"))
 
+@app.route("/edit/<int:id>",methods=['POST'])
+@login_required
+def edit(id):
+    if request.method == 'POST':
+        item = Item.query.filter_by(id=id).first()
+        name = request.form['name']
+        description = request.form['desc']
+        place_found = request.form['place']
+        date_found = request.form['date']
+        item.name = name
+        item.description = description
+        item.place_found = place_found
+        item.date_found = date_found
+        db.session.commit()
+        flash("Item details updated successfully","success")
+        return redirect(url_for("updateitem"))
+
+@app.route("/delete/<int:id>")
+@login_required
+def delete(id):
+    item = Item.query.filter_by(id=id).first()
+    db.session.delete(item)
+    db.session.commit()
+    flash("Item deleted successfully","success")
+    return redirect(url_for("updateitem"))
+
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
+    flash("Logged Out",'success')
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
