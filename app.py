@@ -4,6 +4,7 @@ from flask_login import UserMixin,LoginManager,login_user,logout_user,login_requ
 from werkzeug.security import generate_password_hash, check_password_hash
 #from . import db
 import os
+import logging
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(16)
@@ -11,6 +12,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lost&found.db'
 #app.config['SQLALCHEMY_ECHO'] = True
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
