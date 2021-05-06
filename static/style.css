@@ -4,8 +4,7 @@
 	box-sizing: border-box;
 }
 
-button,
-a {
+#button_id {
 	z-index: 99;
 }
 
