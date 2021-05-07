@@ -48,7 +48,7 @@ class Item(db.Model):
     station_id = db.Column(db.Integer, db.ForeignKey('station.id', onupdate="CASCADE", ondelete="CASCADE"), nullable=False)
     station = db.relationship('Station')
 
-db.create_all()
+#db.create_all()
 
 @app.route("/")
 def home():
@@ -79,6 +79,9 @@ def viewitem():
 @login_required
 def updateitem():
     items = Item.query.filter_by(station_id=current_user.id)
+    search = request.args.get('search')
+    if search:
+        items = Item.query.filter_by(name=search).all()
     return render_template('updateitem.html',items=items)
 
 @app.route("/edit_item/<int:id>",methods=['GET','POST'])
