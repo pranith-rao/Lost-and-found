@@ -1,6 +1,8 @@
 # Lost-and-found
 This website idea came up when I was brainstorming for an idea during OctaHacks 3.0. This website can be used by the cops to list the lost items reported to them by the citizens and the citizens can use this website to check if their lost item is listed and if found, collect it from the respective police station. 
 
+To have a glimpse on how this app works watch this https://www.youtube.com/watch?v=1qmCKdrBzlI
+
 ## Live Link
 Click on this url https://lost-and-found-pranith.herokuapp.com/ and let me know how it is. Cheers! 
 
