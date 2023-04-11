@@ -4,7 +4,7 @@ This website idea came up when I was brainstorming for an idea during OctaHacks 
 To have a glimpse on how this website works watch this https://www.youtube.com/watch?v=1qmCKdrBzlI
 
 ## Live Link
-~~Click on this url https://lost-and-found-pranith.herokuapp.com/ and let me know how it is. Cheers!~~
+~~Click on this url https://lost-and-found-pranith.herokuapp.com/ and let me know how it is. Cheers!~~  
 Since heroku took down the free hosting service, the site is no longer hosted anywhere.
 
 ## Steps to run the application
